@@ -55,10 +55,20 @@ N'hésite pas à m'ouvrir des "Issues" sur ce repo si tu trouves des bugs ou des
 
 La vidéo est trop lourde pour être poussée sur un repo git, elle est donc ignorée par défaut, tu peux l'ajouter quand tu clones le projet dans le dossier `assets/video/`
 
+# CHANGELOG
+
+* **8/01/2022**
+	* Réécriture du code initial
+	* Comptabilité sur tous les navigateurs
+	* Résolution du [problème d'autoplay](https://developer.chrome.com/blog/autoplay/).
+* **23/01/2022**
+	* Ajout d'une fonction de *callback* après la fin d'une vidéo.
+	* Ajout d'une coupure plus douce quand on quitte la vidéo, 1s après
+	* Test de la qualité du code en ligne
+
 # TODO LIST
 
 Restant à faire : 
 
 * tester la charge sur un serveur
 * vérifier le localStorage.
-* Tester sur mobile.

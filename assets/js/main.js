@@ -33,7 +33,7 @@ function VideoManager() {
 
 	/**
 	* Create Cells in the grid, based on cellNumbers
-	*/ 
+	**/ 
 	this.peuplateGrid = () => {
 		const self = this;
 		let content = "";
@@ -50,7 +50,7 @@ function VideoManager() {
 	* simple algorithm explanation : 
 	*    - if video already in cell, we trigger playing
 	*    - else we create a video that autoplay at currentVideoTime value and we increment currentVideoTime of 10s 
-	*/
+	**/
 	this.listenCellHover = () => {
 		const self = this;
 		let domElement;
@@ -75,7 +75,7 @@ function VideoManager() {
 				$(this).html(video);
 
                 document.getElementById(`video${id}`).currentTime = self.videoCurrentTime;
-                self.videoCurrentTime += 10;
+				self.videoCallback(id);
 
                 $(`#video${id}`).animate({
                     opacity: 1
@@ -85,9 +85,35 @@ function VideoManager() {
 
         $(self.selectors.aCell).mouseleave(function() {
             var video = domElement.querySelector('video');
-            video.pause();
-            self.videoCurrentTime = video.currentTime;
+            
+            if (video && (video.duration < self.videoCurrentTime || video.ended)) {
+        		self.videoEnded();
+            } else {
+            	self.videoCurrentTime = video.currentTime + 10;
+
+            	// smooth Pause
+            	setTimeout(() => {
+            		video.pause();
+            	}, 1000);
+            }
         });
+	}
+
+	/**
+	* Add a listener and detect when a video is finished to trigger a function
+	**/
+	this.videoCallback = (id) => {
+		document.getElementById(`video${id}`).addEventListener('ended', () => {
+			this.videoEnded();
+		}, false);
+	}
+
+	/**
+	* The actual video Callback
+	**/ 
+	this.videoEnded = () => {
+		// TODO : Replace me with custom behavior
+		alert('Vidéo terminée');
 	}
 
 	/**
