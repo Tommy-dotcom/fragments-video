@@ -64,11 +64,12 @@ La vidéo est trop lourde pour être poussée sur un repo git, elle est donc ign
 * **23/01/2022**
 	* Ajout d'une fonction de *callback* après la fin d'une vidéo.
 	* Ajout d'une coupure plus douce quand on quitte la vidéo, 1s après
-	* Test de la qualité du code en ligne
+	* Test de la qualité du code en ligne [Environnement de staging](http://theo.thomaslamothe.com).
 
 # TODO LIST
 
 Restant à faire : 
 
-* tester la charge sur un serveur
-* vérifier le localStorage.
+* Essayer vidéo 30% plus grosse
+* Voir le problème de Promesse entre `play` et `pause` [Google Blog](https://developers.google.com/web/updates/2017/06/play-request-was-interrupted)
+* Mettre un loader en staging/prod pour prévenir que la page charge.
